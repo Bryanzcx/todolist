@@ -13,7 +13,24 @@
         <!-- 输入区域 -->
         <div class="input-area">
             <input type="text" id="todoInput" placeholder="输入要做的事情...">
+            <input type="datetime-local" id="todoDateTime">
+            <select id="todoPriority">
+                <option value="3">🔴 高优先级</option>
+                <option value="2" selected>🟡 中优先级</option>
+                <option value="1">🟢 低优先级</option>
+            </select>
             <button id="addBtn">添加</button>
+        </div>
+
+        <!-- 排序区域 -->
+        <div class="sort-area">
+            <label>排序方式：</label>
+            <select id="sortBy">
+                <option value="time-asc">⏰ 按时间（近→远）</option>
+                <option value="time-desc">⏰ 按时间（远→近）</option>
+                <option value="priority-desc">🔥 按优先级（高→低）</option>
+                <option value="priority-asc">🔥 按优先级（低→高）</option>
+            </select>
         </div>
 
         <!-- 列表区域 -->
