@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个网页应用 - Todo清单</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 我的待办事项</h1>
+
+        <!-- 输入区域 -->
+        <div class="input-area">
+            <input type="text" id="todoInput" placeholder="输入要做的事情...">
+            <button id="addBtn">添加</button>
+        </div>
+
+        <!-- 列表区域 -->
+        <ul id="todoList"></ul>
+
+        <!-- 统计区域 -->
+        <div class="stats">
+            <span id="count">共 0 项</span>
+            <button id="clearBtn">清空已完成</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
