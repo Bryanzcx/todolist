@@ -16,7 +16,7 @@ body {
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     width: 90%;
-    max-width: 450px;
+    max-width: 520px;
 }
 
 h1 {
@@ -28,12 +28,13 @@ h1 {
 /* 输入区域 */
 .input-area {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 #todoInput {
-    flex: 1;
+    flex: 1 1 100%;
     padding: 12px 15px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
@@ -46,8 +47,23 @@ h1 {
     border-color: #667eea;
 }
 
+#todoDateTime, #todoPriority {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+#todoDateTime:focus, #todoPriority:focus {
+    border-color: #667eea;
+}
+
 #addBtn {
-    padding: 12px 24px;
+    padding: 10px 24px;
     background: #667eea;
     color: white;
     border: none;
@@ -61,12 +77,40 @@ h1 {
     background: #5a67d8;
 }
 
+/* 排序区域 */
+.sort-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 10px 12px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.sort-area label {
+    font-weight: bold;
+}
+
+#sortBy {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #d0d8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
 /* 列表样式 */
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 300px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
@@ -78,6 +122,7 @@ li {
     margin-bottom: 8px;
     border-radius: 8px;
     transition: all 0.3s;
+    gap: 10px;
 }
 
 li:hover {
@@ -88,7 +133,7 @@ li.completed {
     opacity: 0.6;
 }
 
-li.completed span {
+li.completed .todo-text {
     text-decoration: line-through;
     color: #888;
 }
@@ -96,13 +141,56 @@ li.completed span {
 li input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    margin-right: 12px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
-li span {
+li .todo-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+li .todo-text {
     font-size: 16px;
+    word-break: break-all;
+}
+
+li .todo-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+li .todo-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+li .todo-priority {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+li .priority-high {
+    background: #ffe0e0;
+    color: #c0392b;
+}
+
+li .priority-medium {
+    background: #fff3cd;
+    color: #b7950b;
+}
+
+li .priority-low {
+    background: #d4edda;
+    color: #27ae60;
 }
 
 li .delete-btn {
@@ -113,10 +201,100 @@ li .delete-btn {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    flex-shrink: 0;
+}
+
+li .edit-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+li .edit-btn:hover {
+    background: #2980b9;
 }
 
 li .delete-btn:hover {
     background: #ee5a5a;
+}
+
+/* 编辑状态 */
+li.editing {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+}
+
+.edit-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.edit-area input[type="text"] {
+    padding: 8px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+
+.edit-area input[type="text"]:focus {
+    border-color: #f59e0b;
+}
+
+.edit-row {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-row input[type="datetime-local"],
+.edit-row select {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.save-btn:hover {
+    background: #219a52;
+}
+
+.cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn:hover {
+    background: #7f8c8d;
 }
 
 /* 统计区域 */
@@ -150,4 +328,19 @@ li .delete-btn:hover {
     text-align: center;
     color: #999;
     padding: 30px;
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    #todoDateTime, #todoPriority, #addBtn {
+        width: 100%;
+    }
 }
