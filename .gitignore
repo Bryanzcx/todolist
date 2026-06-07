@@ -1,0 +1,49 @@
+# 1. 依赖包 / 第三方库（永远不上传）
+node_modules/
+vendor/
+packages/
+
+# 2. 编译打包产物（自动生成）
+dist/
+build/
+output/
+target/
+*.exe
+*.dll
+
+# 3. 环境变量 / 密钥（绝对不能上传）
+.env
+.env.local
+.env.*.local
+config.json
+secrets/
+
+# 4. 日志文件
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+
+# 5. IDE / 编辑器配置（每个人不一样）
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.iml
+
+# 6. 系统垃圾文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 7. 测试 / 临时文件
+tmp/
+temp/
+*.tmp
+*.temp
